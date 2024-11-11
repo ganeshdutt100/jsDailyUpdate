@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="EntryPoint" />
+
+      <button onclick="calculate(this.form); return false">Click me</button>
+      <br />
+
+      <input type="text" class="result" />
+    </form>
+
+    <script>
+      const result = document.querySelector(".result");
+
+      function calculate(form) {
+        result.value = eval(form.EntryPoint.value);
+      }
+    </script>
+  </body>
+</html>

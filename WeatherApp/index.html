@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form id="weatherForm">
+        <input type="text" id="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    <div id="weatherResult"></div>
+
+    <script>
+        // Fetch API key from OpenWeatherMap (replace with your actual API key)
+const apiKey = 'your_api_key_here';
+
+// Function to fetch weather data
+async function getWeather(city) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('City not found');
+        }
+        const data = await response.json();
+        displayWeather(data);
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+// Function to display weather data
+function displayWeather(data) {
+    const weatherDiv = document.getElementById('weatherResult');
+    const { name, main, weather } = data;
+    weatherDiv.innerHTML = `
+        <h2>Weather in ${name}</h2>
+        <p>Temperature: ${main.temp}°C</p>
+        <p>Condition: ${weather[0].description}</p>
+    `;
+}
+
+// Event listener for form submission
+document.getElementById('weatherForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const city = document.getElementById('city').value;
+    getWeather(city);
+});
+
+    </script>
+</body>
+</html>

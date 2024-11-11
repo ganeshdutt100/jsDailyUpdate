@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input
+        type="text"
+        name="entry"
+        value="0"
+        onchange="calculate(this.form, this.name)"
+      />
+      <br />
+      <br />
+      <b>Action</b> (Default - Double);
+      <input
+        type="checkbox"
+        name="square"
+        onchange="calculate(this.form, this.name)"
+      />
+      Square
+      <br /><br />
+      <b>Result</b>
+      <input type="text" id="result" name="result" value="0" readonly />
+    </form>
+
+    <script>
+      function calculate(form, callingField) {
+        if (callingField == "result") {
+          form.entry.value = Math.sqrt(form.result.value);
+        } else {
+          if (form.square.checked) {
+            form.result.value = form.entry.value * form.entry.value;
+          } else {
+            form.result.value = form.entry.value * 2;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

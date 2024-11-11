@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        width: 300px;
+        border-radius: 10px;
+        justify-content: center;
+        background-color: rgb(92, 105, 105);
+        flex-wrap: wrap;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+      }
+      input {
+        width: 300px;
+        border-radius: 30px;
+        height: 50px;
+        font-size: 24px;
+        margin: 10px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+      }
+      button {
+        padding: 10px;
+        margin: 10px;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        color: white;
+        font-size: 19px;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      /* button:hover {
+        background-color: rgb(217, 217, 255);
+        color: white;
+        transition: background-color 0.3s ease;
+        color: black;
+      } */
+      button:active {
+        background-color: rgb(140, 140, 255);
+        color: white;
+        transition: background-color 0.3s ease;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="event.preventDefault()">
+      <input type="text" />
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>0</button>
+      <button>+</button>
+      <button>-</button>
+      <button>=</button>
+      <button>/</button>
+      <button>*</button>
+    </form>
+
+    <script>
+      let btn = document.querySelectorAll("button");
+
+      btn.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          let input = document.querySelector("input");
+          if (this.textContent === "=") {
+            input.value = eval(input.value);
+          } else {
+            input.value += this.textContent;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
