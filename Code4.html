@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input
+        type="text"
+        class="inputEntry"
+        name="entryPoint"
+        placeholder="Enter your Number"
+      />
+      <br />
+      <b>Action </b>(Default - Double)
+      <input type="checkbox" class="Checkbox" /> <br />
+      <input type="text" class="result" placeholder="loading..." />
+    </form>
+
+    <script>
+      let inputEntry = document.querySelector(".inputEntry");
+      let checkBox = document.querySelector(".Checkbox");
+      let result = document.querySelector(".result");
+
+      checkBox.addEventListener("click", function (event) {
+        let number = Number(inputEntry.value);
+        if (event.target.checked) {
+          result.value = Math.pow(number, 2);
+        } else {
+          result.value = number * 2;
+        }
+      });
+    </script>
+  </body>
+</html>
